@@ -1,4 +1,4 @@
-## Create configmap and Refrencing DB in your pod, its configured after container port##
+## Create configmap and Refrence DB in your pod, its configured after container port##
 Example:
 
         env:
@@ -27,7 +27,7 @@ Example:
 
           ##COMMANDS##
 
-          kubectl exec -it <....> -- /bin/bash = get into the pod shell
-          ls /opt = to initially show db-port
-          env | grep db = to check db
-          cat /opt/db-port | more = To see the actual db-port
+          kubectl exec -it <....> -- /bin/bash    = get into the pod shell
+          ls /opt                                 = to initially show db-port
+          env | grep db                           = to check db
+          cat /opt/db-port | more                 = To see the actual db-port
