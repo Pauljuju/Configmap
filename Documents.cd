@@ -1,0 +1,33 @@
+## Create configmap and Refrencing DB in your pod, its configured after container port##
+Example:
+
+        env:
+        - name: DB-PORT
+          valueFrom:
+            configMapKeyRef:
+              name: test-cm
+              key: db-port
+
+
+## But the above isnt professional when changing DB-PORT due to change of app circumstances,
+## Use below idea to add volume to deployment.yml and mount it finally##
+
+Example: 
+
+        volumeMounts:
+        - name: db-connection
+          mountPath: /opt
+        volumes:
+        - name: db-connection
+        configMap: 
+          name: test-cm
+
+          NOTE: Please make sure codes are formatted for proper application, YAML file formatter etc can help.
+
+
+          ##COMMANDS##
+
+          kubectl exec -it <....> -- /bin/bash = get into the pod shell
+          ls /opt = to initially show db-port
+          env | grep db = to check db
+          cat /opt/db-port | more = To see the actual db-port
